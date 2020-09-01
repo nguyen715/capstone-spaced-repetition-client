@@ -1,0 +1,9 @@
+#login-form {
+  width: 270px;
+}
+
+#login-form button {
+  display: block;
+  margin: 20px auto 0 auto;
+
+}

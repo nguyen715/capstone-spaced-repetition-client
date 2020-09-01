@@ -1,0 +1,14 @@
+.App {
+  margin: auto;
+}
+
+form {
+  width: 350px;
+  margin: auto;
+}
+
+form div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}

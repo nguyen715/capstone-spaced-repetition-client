@@ -15,3 +15,31 @@ body {
 :root {
   --font-size: calc(10px + 1vmin);
 }
+
+.center {
+  margin: auto;
+}
+
+.center-children-x {
+  text-align: center;
+}
+
+.display-block {
+  display: block;
+}
+
+.display-inline {
+  display: inline;
+}
+
+.display-inline-block {
+  display: inline-block;
+}
+
+.display-flex {
+  display: flex;
+}
+
+.width-500 {
+  width: 500px;
+}
