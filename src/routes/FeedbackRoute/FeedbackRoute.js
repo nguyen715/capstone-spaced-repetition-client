@@ -52,7 +52,7 @@ class LearningRoute extends Component {
         </div>
         <form>
           <label htmlFor="guess">Enter your guess: </label>
-          <input type="text" id="learn-guess-input" onChange={this.guessChanged} value={this.state.guess}></input>
+          <input type="text" id="guess" onChange={this.guessChanged} value={this.state.guess}></input>
           <input type="submit" onClick={this.handleSubmitClick} value="Submit"></input>
         </form>
       </section>
