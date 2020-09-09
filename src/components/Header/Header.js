@@ -15,7 +15,7 @@ class Header extends Component {
     return (
       <>
         <span>
-          {this.context.user.name}
+          Signed in as: {this.context.user.name}
         </span>
         <nav>
           <Link

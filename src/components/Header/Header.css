@@ -1,3 +1,9 @@
 .Header nav {
   text-align: center;
 }
+
+.Header span {
+  display: block;
+  margin-bottom: 20px;
+  text-align: center;
+}

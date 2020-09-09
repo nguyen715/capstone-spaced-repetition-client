@@ -1,60 +1,83 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 import LanguageContext from '../../contexts/LanguageContext'
 import LanguageService from '../../services/language-api-service'
+import './FeedbackRoute.css'
 
 class LearningRoute extends Component {
   static contextType = LanguageContext;
 
   state = {
-    guess: ''
+    shouldRedirect: false
   }
 
-  componentDidMount () {    
-    LanguageService.getLanguageAndWords()
-    .then(data => {
-      console.log(data);
-      this.context.setLanguage(data.language);
-      this.context.setWords(data.words);
-    })
+  renderRedirect = () => {
+    return (
+      <Redirect to="/learn" />
+    )
+  }
+
+  // componentDidMount = () => {    
+  //   LanguageService.getLanguageAndWords()
+  //   .then(data => {
+  //     this.context.setLanguage(data.language);
+  //     this.context.setWords(data.words);
+  //   })
     
-    LanguageService.getNextWord()
-    .then(word => {
-      this.context.setNextWord(word);
-    })
-  }
+  //   LanguageService.getNextWord()
+  //   .then(word => {
+  //     this.context.setNextWord(word);
+  //   })
+  // }
 
-  guessChanged = e => {
-    this.setState({ guess: e.target.value })
-  }
-
-  handleSubmitClick = e => {
+  handleButtonClick = e => {
     e.preventDefault();
-    LanguageService.postGuess(this.state.guess)
-    .then()
+    this.setState({ shouldRedirect: true });
   }
 
   render() {
     const word = this.context.nextWord;
-    console.log(word);
+    const isCorrect = word.translation === this.context.guess;
     return (
-      <section id="learning">
-        <div>
-          Your word is: {word.nextWord}
+      <section id="feedback">
+        {this.state.shouldRedirect && this.renderRedirect()}
+        <div className="word-feedback-info">
+          <div>
+            Your word is: {word.nextWord}
+          </div>
+          <div>
+            You guessed: {this.context.guess}
+          </div>
+          <div>
+            Your guess is... {
+              (isCorrect)
+              ? 'Correct!'
+              : `Incorrect! The correct answer is: ${word.translation}.`
+            }
+          </div>
+          <div>
+            Correct guesses: {
+              (isCorrect)
+              ? word.wordCorrectCount + 1
+              : word.wordCorrectCount
+              }
+          </div>
+          <div>
+            Incorrect guesses: {
+              (isCorrect)
+              ? word.wordIncorrectCount
+              : word.wordIncorrectCount + 1
+              }
+          </div>
+          <div>
+            Current total score: {
+              (isCorrect)
+              ? word.totalScore + 1
+              : word.totalScore
+            }
+          </div>
         </div>
-        <div>
-          Current total score: {word.totalScore}
-        </div>
-        <div>
-          Correct guesses: {word.wordCorrectCount}
-        </div>
-        <div>
-          Incorrect guesses: {word.wordIncorrectCount}
-        </div>
-        <form>
-          <label htmlFor="guess">Enter your guess: </label>
-          <input type="text" id="guess" onChange={this.guessChanged} value={this.state.guess}></input>
-          <input type="submit" onClick={this.handleSubmitClick} value="Submit"></input>
-        </form>
+        <button onClick={this.handleButtonClick}>Next word</button>
       </section>
     );
   }

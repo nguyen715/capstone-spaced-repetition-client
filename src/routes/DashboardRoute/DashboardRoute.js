@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom'
 import LanguageContext from '../../contexts/LanguageContext'
 import LanguageService from '../../services/language-api-service'
 import Word from '../../components/Word/Word'
+import './DashboardRoute.css'
 
 class DashboardRoute extends Component {
   state = {
@@ -16,7 +17,6 @@ class DashboardRoute extends Component {
   componentDidMount = () => {
     LanguageService.getLanguageAndWords()
     .then(data => {
-      console.log(data);
       this.context.setLanguage(data.language);
       this.context.setWords(data.words);
     })
@@ -43,13 +43,15 @@ class DashboardRoute extends Component {
       {this.state.shouldRedirect && this.renderRedirect()}
         <h2>My Language: {this.context.language.name}</h2>
 
-        <div className="word-list">
-          {this.context.words.map(word => <Word word={word} key={word.id} /> )}
-        </div>
         <div className="total-score">
           Total score so far: {this.context.language.total_score}
         </div>
+
         <button onClick={this.handleClick}>Start Learning!</button>
+
+        <div className="word-list">
+          {this.context.words.map(word => <Word word={word} key={word.id} /> )}
+        </div>
       </section>
     );
   }

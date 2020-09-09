@@ -1,0 +1,21 @@
+#dashboard .word-list {
+  display: flex;
+  width: 900px;
+  margin: 20px auto 0px auto;
+  flex-wrap: wrap;
+}
+
+#dashboard h2 {
+  text-align: center;
+}
+
+#dashboard .total-score {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#dashboard button {
+  display: block;
+  margin: auto;
+
+}

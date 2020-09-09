@@ -1,0 +1,12 @@
+#feedback .word-feedback-info {
+  margin: 30px 0 30px 0;
+}
+#feedback .word-feedback-info div {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+#feedback button {
+  display: block;
+  margin: auto;
+}

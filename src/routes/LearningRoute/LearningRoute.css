@@ -1,0 +1,12 @@
+#learning div {
+  text-align: center;
+}
+
+#learning .next-word-info {
+  margin: 30px 0 30px 0;
+}
+
+#learning form .submit-button {
+  display: block;
+  margin: 30px auto 0 auto;
+}

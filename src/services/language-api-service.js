@@ -10,7 +10,6 @@ const LanguageService = {
     }
     )
     .then(res =>
-      console.log(res) &&
       (!res.ok)
         ? res.json().then(err => Promise.reject(err))
         : res.json()
@@ -18,6 +17,15 @@ const LanguageService = {
   },
 
   getNextWord() {
+    // {
+    //   language: data.name,
+    //   nextWord: data.original,
+    //   wordCorrectCount: data.correct_count,
+    //   wordIncorrectCount: data.incorrect_count,
+    //   totalScore: data.total_score,
+    // }
+
+
     return fetch(`${config.API_ENDPOINT}/language/head`, {
       headers: {
         'authorization': `Bearer ${TokenService.getAuthToken()}`
@@ -29,6 +37,10 @@ const LanguageService = {
         : res.json()
     )
   },
+
+  // getHeadWord() {
+  //   return fetch(`${config.API_ENDPOINT}/language/)
+  // }
 
   postGuess(guessString) {
     const options = {

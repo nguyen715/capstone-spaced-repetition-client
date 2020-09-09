@@ -1,0 +1,10 @@
+.word-card {
+  border: solid black 1px;
+  margin: 20px;
+  padding: 20px;
+  width: 250px;
+}
+
+.word-card div {
+  margin-bottom: 10px;
+}
